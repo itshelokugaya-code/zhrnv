@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Case Study: User Management | Anastasia Zhernova</title>
+    <title>Case Study: Enterprise Scale | Anastasia Zhernova</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -16,8 +16,8 @@
                         secondary: '#52525B',
                         accent: '#EA580C',
                         border: '#E4E4E7',
-                        success: '#10B981', // Green for "After"
-                        error: '#EF4444',   // Red for "Before"
+                        success: '#10B981',
+                        warning: '#F59E0B',
                     }
                 }
             }
@@ -27,16 +27,13 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
         body { background-color: #FAFAFA; color: #18181B; }
         
-        /* Abstract UI Mockup Styles */
         .mockup-container {
             background: white;
             border: 1px solid #E4E4E7;
-            border-radius: 12px;
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
         }
-        .skeleton-block { background: #F4F4F5; border-radius: 4px; }
-        .skeleton-text { background: #E4E4E7; height: 8px; border-radius: 2px; }
     </style>
 </head>
 <body class="antialiased">
@@ -44,209 +41,165 @@
     <nav class="fixed w-full z-50 bg-[#FAFAFA]/90 backdrop-blur-md border-b border-border">
         <div class="max-w-4xl mx-auto px-6 py-5 flex justify-between items-center">
             <a href="index.html" class="text-sm font-bold text-secondary hover:text-primary transition-colors">← Back to Portfolio</a>
-            <span class="text-xs font-bold uppercase tracking-widest text-accent">B2B Case Study</span>
+            <span class="text-xs font-bold uppercase tracking-widest text-accent">Scalability Case</span>
         </div>
     </nav>
 
     <section class="pt-40 pb-20 px-6 max-w-4xl mx-auto">
+        <div class="inline-flex items-center gap-2 px-3 py-1 bg-orange-50 border border-orange-100 rounded-full text-xs font-bold text-accent mb-6 uppercase tracking-wider">
+            Enterprise Scale
+        </div>
         <h1 class="text-4xl md:text-6xl font-extrabold text-primary mb-6 leading-tight">
-            Fixing the "Access Chaos": <br>
-            <span class="text-secondary">Enterprise User Management Redesign</span>
+            Scaling User Management <br>
+            <span class="text-secondary">for Multi-Company Architecture</span>
         </h1>
         <p class="text-xl text-secondary leading-relaxed max-w-2xl mb-10">
-            How we reduced CSM workload by 65% and clarified permissions for enterprise admins by moving from a granular toggle mess to a Role-Based Access Control (RBAC) system.
+            How we moved from a constrained pop-up to a scalable wizard flow to support a massive enterprise client with 300+ departments and multi-company roles.
         </p>
 
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 border-y border-border py-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-b border-border py-8">
             <div>
-                <div class="text-3xl font-bold text-primary">-65%</div>
-                <div class="text-xs font-semibold text-gray-400 uppercase tracking-widest mt-1">Setup Time</div>
+                <div class="text-3xl font-bold text-primary">2x</div>
+                <div class="text-xs font-semibold text-gray-400 uppercase tracking-widest mt-1">CSM Capacity</div>
             </div>
             <div>
-                <div class="text-3xl font-bold text-primary">Zero</div>
-                <div class="text-xs font-semibold text-gray-400 uppercase tracking-widest mt-1">CSM Involvement</div>
+                <div class="text-3xl font-bold text-primary">300+</div>
+                <div class="text-xs font-semibold text-gray-400 uppercase tracking-widest mt-1">Departments Scalability</div>
             </div>
             <div>
-                <div class="text-3xl font-bold text-primary">-40%</div>
-                <div class="text-xs font-semibold text-gray-400 uppercase tracking-widest mt-1">Support Tickets</div>
-            </div>
-            <div>
-                <div class="text-3xl font-bold text-primary">3 Days</div>
-                <div class="text-xs font-semibold text-gray-400 uppercase tracking-widest mt-1">To Adopt</div>
+                <div class="text-3xl font-bold text-primary">Legacy</div>
+                <div class="text-xs font-semibold text-gray-400 uppercase tracking-widest mt-1">UI Constraints Kept</div>
             </div>
         </div>
     </section>
 
     <section class="py-16 px-6 max-w-4xl mx-auto">
-        <h2 class="text-2xl font-bold text-primary mb-6">The Challenge: "It's a Full-Time Job"</h2>
+        <h2 class="text-2xl font-bold text-primary mb-6">The Catalyst: Breaking the Pop-up</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-            <div class="text-secondary leading-relaxed space-y-4">
+            <div class="text-secondary leading-relaxed space-y-6">
                 <p>
-                    <strong>The Context:</strong> Our B2B platform serves enterprise clients with 500+ employees.
+                    <strong>The Insight:</strong> During a shadowing session with Customer Success Managers (CSMs), I noticed they were struggling. Configuring a single user involved jumping between tabs and manually reconciling data.
                 </p>
                 <p>
-                    <strong>The Pain Point:</strong> The old system required manual setup for every single user. Customer Success Managers (CSMs) were spending hours manually inputting emails and toggling 20+ permission checkboxes for each employee.
+                    <strong>The Business Trigger:</strong> We signed a new major Enterprise client. They required a "Multi-Company" structure where one user could be an <em>Admin</em> in Company A but just a <em>Viewer</em> in Company B.
                 </p>
-                <ul class="list-disc pl-5 space-y-2 text-sm font-medium text-primary mt-4">
-                    <li>CSMs acted as "Data Entry" clerks.</li>
-                    <li>Admins were terrified of the "Delete" button (fear of data loss).</li>
-                    <li>Permissions were granular and incomprehensible (e.g., "Can view metadata" vs "Can edit metadata").</li>
-                </ul>
+                <div class="p-4 bg-orange-50 border-l-4 border-accent rounded-r-lg text-sm text-primary">
+                    <strong>The Limit:</strong> Our existing configuration lived in a small modal (pop-up). With the new client bringing 300+ departments and locations, the pop-up physically couldn't hold the data.
+                </div>
             </div>
             
-            <div class="mockup-container bg-white p-6 relative border-l-4 border-error">
-                <div class="absolute top-2 right-2 text-error text-xs font-bold uppercase">Before: The Mess</div>
-                <div class="space-y-4 opacity-50 blur-[1px]">
-                    <div class="flex gap-2">
-                        <div class="w-1/3 h-8 bg-gray-200 rounded"></div>
-                        <div class="w-1/3 h-8 bg-gray-200 rounded"></div>
-                        <div class="w-1/3 h-8 bg-gray-200 rounded"></div>
+            <div class="mockup-container p-6 relative bg-gray-50 flex items-center justify-center h-64 border-dashed border-2 border-gray-300">
+                <div class="absolute inset-0 bg-white/50 backdrop-blur-[1px] flex items-center justify-center z-10">
+                    <div class="bg-white p-4 shadow-xl rounded border border-red-200">
+                        <div class="text-xs font-bold text-red-500 uppercase mb-2">System Alert</div>
+                        <div class="text-sm font-bold text-primary">UI Overflow Error</div>
+                        <div class="text-xs text-gray-500 mt-1">Cannot display 342 departments in modal view.</div>
                     </div>
-                    <div class="grid grid-cols-4 gap-2">
-                        <div class="h-4 w-4 bg-gray-300 rounded-full"></div><div class="h-4 bg-gray-200 rounded w-full"></div>
-                        <div class="h-4 w-4 bg-gray-300 rounded-full"></div><div class="h-4 bg-gray-200 rounded w-full"></div>
-                        <div class="h-4 w-4 bg-gray-300 rounded-full"></div><div class="h-4 bg-gray-200 rounded w-full"></div>
-                        <div class="h-4 w-4 bg-gray-300 rounded-full"></div><div class="h-4 bg-gray-200 rounded w-full"></div>
-                        <div class="h-4 w-4 bg-gray-300 rounded-full"></div><div class="h-4 bg-gray-200 rounded w-full"></div>
-                        <div class="h-4 w-4 bg-gray-300 rounded-full"></div><div class="h-4 bg-gray-200 rounded w-full"></div>
-                    </div>
-                    <div class="h-8 bg-gray-100 rounded border border-gray-300 mt-4 flex items-center justify-center text-xs">Save (Error: Missing field)</div>
+                </div>
+                <div class="w-full space-y-2 opacity-30">
+                    <div class="h-4 bg-gray-300 rounded w-full"></div>
+                    <div class="h-4 bg-gray-300 rounded w-full"></div>
+                    <div class="h-4 bg-gray-300 rounded w-full"></div>
+                    <div class="h-4 bg-gray-300 rounded w-full"></div>
                 </div>
             </div>
         </div>
     </section>
 
     <section class="py-16 px-6 max-w-4xl mx-auto bg-white rounded-2xl border border-border">
-        <h2 class="text-2xl font-bold text-primary mb-12">The Logic: From Chaos to System</h2>
-
-        <div class="mb-16">
-            <div class="flex items-center gap-4 mb-6">
-                <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center text-accent font-bold">1</div>
-                <h3 class="text-xl font-bold text-primary">Solving the Time Sink (Bulk Actions)</h3>
-            </div>
-            <p class="text-secondary mb-6 ml-12">
-                We shifted from "One-by-One" creation to "Bulk Operations". I designed a CSV import flow and a "Copy/Paste" email parser that detects formatting errors instantly.
+        <div class="mb-12">
+            <h2 class="text-2xl font-bold text-primary mb-4">The Solution: Multi-Step Wizard</h2>
+            <p class="text-secondary">
+                To handle the complexity without overwhelming the admin, I broke the flow into 6 logic steps. We moved from a "Modal" to a "Full Page" experience.
             </p>
-            <div class="ml-12 mockup-container p-8 bg-gray-50 flex flex-col items-center">
-                <div class="w-full max-w-md bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-                    <div class="text-xs font-bold text-gray-400 uppercase mb-2">New Invite Flow</div>
-                    <div class="h-24 border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center bg-gray-50 mb-4">
-                        <span class="text-xs text-gray-500">Drop CSV or Paste Emails</span>
-                    </div>
-                    <div class="flex gap-2">
-                        <div class="flex-1 h-2 bg-green-100 rounded overflow-hidden"><div class="w-3/4 h-full bg-green-500"></div></div>
-                        <div class="text-[10px] text-green-600 font-bold">Validating...</div>
-                    </div>
-                </div>
-            </div>
         </div>
 
-        <div class="mb-16">
-            <div class="flex items-center gap-4 mb-6">
-                <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center text-accent font-bold">2</div>
-                <h3 class="text-xl font-bold text-primary">Clarifying Permissions (RBAC)</h3>
-            </div>
-            <p class="text-secondary mb-6 ml-12">
-                Research showed Admins didn't care about "Edit Metadata". They cared about "Can this intern break the system?". 
-                I grouped 50+ granular permissions into 4 clear Roles: <strong>Owner, Admin, Editor, Viewer.</strong>
-            </p>
-            <div class="ml-12 grid grid-cols-2 gap-4">
-                <div class="p-4 border border-red-200 bg-red-50 rounded-lg opacity-60">
-                    <div class="text-xs font-bold text-red-500 mb-2">Before</div>
-                    <div class="space-y-1">
-                        <div class="w-4 h-4 border border-gray-400 inline-block"></div> <span class="text-[10px]">Edit Settings</span><br>
-                        <div class="w-4 h-4 border border-gray-400 inline-block"></div> <span class="text-[10px]">View Billings</span><br>
-                        <div class="w-4 h-4 border border-gray-400 inline-block"></div> <span class="text-[10px]">Delete Users</span>
+        <div class="space-y-12">
+            
+            <div class="flex gap-6">
+                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm">1</div>
+                <div>
+                    <h3 class="text-lg font-bold text-primary mb-2">Separating Global vs. Local Data</h3>
+                    <p class="text-sm text-secondary mb-4">
+                        We realized that "Name" and "Job Title" are global (belong to the person), while "Roles" and "Departments" are local (belong to the company).
+                    </p>
+                    <div class="p-4 bg-gray-50 rounded border border-gray-200 text-xs font-mono text-gray-600">
+                        User: Anna <br>
+                        ├── Global: Product Designer <br>
+                        ├── Company A: <span class="text-green-600 font-bold">Admin</span> (Dept: Design)<br>
+                        └── Company B: <span class="text-blue-600 font-bold">Viewer</span> (Dept: Marketing)
                     </div>
                 </div>
-                <div class="p-4 border border-green-200 bg-green-50 rounded-lg">
-                    <div class="text-xs font-bold text-green-600 mb-2">After (Role Card)</div>
-                    <div class="font-bold text-primary text-sm">Editor Role</div>
-                    <div class="text-[10px] text-gray-500 mt-1">Can edit content. <br>Cannot delete users or change billing.</div>
-                </div>
             </div>
-        </div>
 
-        <div>
-            <div class="flex items-center gap-4 mb-6">
-                <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center text-accent font-bold">3</div>
-                <h3 class="text-xl font-bold text-primary">Safe Offboarding</h3>
-            </div>
-            <p class="text-secondary mb-6 ml-12">
-                Deleting a user used to mean deleting their work history. I introduced a "Deactivate & Reassign" flow.
-            </p>
-             <div class="ml-12 mockup-container p-6 bg-white border border-gray-200">
-                <div class="flex justify-between items-center mb-4 border-b pb-4">
-                    <span class="font-bold text-sm">Deactivate User: John Doe</span>
-                    <span class="text-xs text-gray-400">X</span>
-                </div>
-                <div class="bg-orange-50 p-3 rounded text-xs text-orange-800 mb-4">
-                    ⚠️ John has 12 active projects. Transfer them?
-                </div>
-                <div class="flex gap-2">
-                    <div class="h-8 flex-1 bg-primary text-white text-xs flex items-center justify-center rounded">Transfer & Deactivate</div>
-                    <div class="h-8 w-20 border border-gray-300 text-xs flex items-center justify-center rounded">Cancel</div>
+            <div class="flex gap-6">
+                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm">2</div>
+                <div>
+                    <h3 class="text-lg font-bold text-primary mb-2">Solving the "Click Fatigue"</h3>
+                    <p class="text-sm text-secondary mb-4">
+                        With 5+ companies, selecting locations for each one is tedious. I added an "Apply to All" logic.
+                    </p>
+                    <div class="flex items-center gap-3 p-3 border border-gray-200 rounded-lg w-fit bg-white shadow-sm">
+                        <div class="w-10 h-5 bg-green-500 rounded-full relative">
+                            <div class="w-4 h-4 bg-white rounded-full absolute right-0.5 top-0.5 shadow-sm"></div>
+                        </div>
+                        <span class="text-xs font-bold text-primary">Apply settings to all linked companies</span>
+                    </div>
                 </div>
             </div>
-        </div>
 
+            <div class="flex gap-6">
+                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm">3</div>
+                <div>
+                    <h3 class="text-lg font-bold text-primary mb-2">Step-by-Step Validation</h3>
+                    <p class="text-sm text-secondary mb-4">
+                        Instead of one giant "Save" button that might fail, each step (Roles, 2FA, Vacation Mode) validates individually. This prevents data conflicts before they happen.
+                    </p>
+                </div>
+            </div>
+
+        </div>
     </section>
 
     <section class="py-20 px-6 max-w-4xl mx-auto">
-        <h2 class="text-2xl font-bold text-primary mb-8">The Result: A Self-Serve System</h2>
-        
-        <div class="mockup-container bg-white p-2 md:p-8 relative border-t-4 border-success shadow-2xl">
-            <div class="absolute top-2 right-2 text-success text-xs font-bold uppercase">After: Clean & Clear</div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
             
-            <div class="flex justify-between mb-8">
-                <div class="font-bold text-lg text-primary">Team Members</div>
-                <div class="bg-accent text-white px-4 py-2 rounded text-xs font-bold shadow-lg shadow-orange-100">Invite Members +</div>
+            <div>
+                <h3 class="text-xl font-bold text-primary mb-4">Strategic Pragmatism</h3>
+                <p class="text-secondary leading-relaxed mb-4">
+                    <strong>The Constraint:</strong> We needed to ship before the Enterprise client onboarded. We didn't have time to update the entire Design System.
+                </p>
+                <p class="text-secondary leading-relaxed">
+                    <strong>The Decision:</strong> I chose to use our legacy UI components (buttons, inputs) inside the new logic flow. This allowed Engineering to build 3x faster, ensuring we met the deadline.
+                </p>
             </div>
 
-            <div class="grid grid-cols-4 gap-4 border-b border-gray-100 pb-2 mb-4 text-xs font-bold text-gray-400 uppercase tracking-wider">
-                <div class="col-span-1">Name</div>
-                <div class="col-span-1">Role</div>
-                <div class="col-span-1">Last Active</div>
-                <div class="col-span-1 text-right">Action</div>
-            </div>
-
-            <div class="grid grid-cols-4 gap-4 items-center py-3 border-b border-gray-50">
-                <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-full bg-gray-200"></div>
-                    <div class="h-3 w-24 bg-gray-800 rounded"></div>
-                </div>
-                <div><span class="px-2 py-1 bg-purple-100 text-purple-700 text-[10px] font-bold uppercase rounded">Admin</span></div>
-                <div class="h-2 w-16 bg-gray-200 rounded"></div>
-                <div class="text-right text-gray-400">...</div>
-            </div>
-            
-             <div class="grid grid-cols-4 gap-4 items-center py-3 border-b border-gray-50">
-                <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-full bg-gray-200"></div>
-                    <div class="h-3 w-20 bg-gray-800 rounded"></div>
-                </div>
-                <div><span class="px-2 py-1 bg-blue-100 text-blue-700 text-[10px] font-bold uppercase rounded">Editor</span></div>
-                <div class="h-2 w-16 bg-gray-200 rounded"></div>
-                <div class="text-right text-gray-400">...</div>
-            </div>
-
-            <div class="grid grid-cols-4 gap-4 items-center py-3">
-                <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-full bg-gray-200"></div>
-                    <div class="h-3 w-24 bg-gray-800 rounded"></div>
-                </div>
-                <div><span class="px-2 py-1 bg-gray-100 text-gray-600 text-[10px] font-bold uppercase rounded">Viewer</span></div>
-                <div class="h-2 w-12 bg-gray-200 rounded"></div>
-                <div class="text-right text-gray-400">...</div>
+            <div class="bg-primary text-white p-8 rounded-2xl shadow-xl">
+                <h3 class="text-xl font-bold text-white mb-6">Outcomes</h3>
+                <ul class="space-y-6">
+                    <li class="flex items-start gap-4">
+                        <span class="text-accent font-bold text-xl">01</span>
+                        <p class="text-sm text-gray-300">
+                            <strong class="text-white block mb-1">CSM Efficiency Doubled</strong>
+                            Customer Success Managers can now handle 2x the client volume because they aren't stuck doing manual data entry.
+                        </p>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <span class="text-accent font-bold text-xl">02</span>
+                        <p class="text-sm text-gray-300">
+                            <strong class="text-white block mb-1">Enterprise Acquisition</strong>
+                            The new architecture successfully onboarded the target client with 300+ departments without a single UI break.
+                        </p>
+                    </li>
+                </ul>
             </div>
 
         </div>
-
-        <div class="mt-12 p-8 bg-gray-100 rounded-xl text-center">
-            <p class="text-lg italic font-medium text-secondary mb-4">
-                "The new invite flow is so simple, we stopped doing onboarding calls for it. Clients just figure it out."
+        
+        <div class="mt-16 border-t border-border pt-8 text-center">
+            <p class="text-sm text-secondary italic">
+                "If I were to measure this today, I would track <strong>Time to Finish (TTF)</strong> per user creation. Retrospectively, the drop in support tickets regarding 'access errors' was the strongest signal of success."
             </p>
-            <div class="text-xs font-bold uppercase text-primary">— Head of Customer Success</div>
         </div>
     </section>
 
